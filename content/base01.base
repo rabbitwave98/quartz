@@ -1,0 +1,16 @@
+views:
+  - type: list
+    name: Table
+    filters:
+      and:
+        - file.folder == "content"
+    order:
+      - file.name
+      - file.folder
+    sort:
+      - property: file.folder
+        direction: ASC
+      - property: file.name
+        direction: ASC
+    indentProperties: false
+    markers: none
