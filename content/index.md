@@ -8,3 +8,5 @@ cover: content/img/hd01.webp
 ---
 
 Oh shit is this working now?
+
+![[2026 . 03 . 29]]
