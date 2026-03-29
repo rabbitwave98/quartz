@@ -2,3 +2,24 @@
 @use "themes";
 
 // put your custom CSS here!
+
+/* Remove the Graph Widget */
+.graph {
+    display: none;
+}
+
+/* Sidebar Page Title */
+.page-title {
+    font-size: 1rem;
+}
+
+/* Center the Light/Dark Mode & Reader Icons */
+#quartz-body > div.left.sidebar > div.flex-component {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Remove the Search Bar */
+#quartz-body > div.left.sidebar > div.flex-component > div:nth-child(1) {
+    display: none;
+}
