@@ -1,13 +1,10 @@
 ---
-title: wait lemme fix this
+draft: true
+title: ｒａｂｂｉｔｗａｖｅ９８
 created: 2026-03-28T18:21:54.570-07:00
 modified: 2026-03-28T18:25:03.536-07:00
+description: this is a digital garden.
 cover: content/img/hd01.webp
 ---
 
-one day
-
-i will get this thing to work
-
-someday ;  w  ;
-
+what is this
