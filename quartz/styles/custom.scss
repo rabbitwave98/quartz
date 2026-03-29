@@ -23,3 +23,80 @@
 #quartz-body > div.left.sidebar > div.flex-component > div:nth-child(1) {
     display: none;
 }
+
+/* Cute Retro Borders */
+
+.left.sidebar {
+    background-color: lab(97.2858% -.784516 -27.802);
+    border: 4px ridge lab(91.4801% -.684053 -27.7666);
+    border-radius: 12px;
+}
+
+.right.sidebar {
+    background-color: lab(97.2858% -.784516 -27.802);
+    border: 4px ridge lab(91.4801% -.684053 -27.7666);
+    border-radius: 12px;
+}
+
+nav.breadcrumb-container {
+    background-color: lab(97.2858% -.784516 -27.802);
+    border: 4px ridge lab(91.4801% -.684053 -27.7666);
+    border-radius: 12px;
+    padding: 5px;
+}
+
+
+
+/* TEMP: Item List Less Funky */
+li.section-li {
+    display: contents;
+}
+
+li.section {
+    padding: 5px;
+}
+
+/* Main article content */
+
+h1.article-title {
+    background-color: lab(76 11.84 -25.8 / 0.25);
+    border: 4px ridge lab(91.4801% -.684053 -27.7666);
+    border-radius: 12px;
+    padding: 5px;
+}
+
+p.content-meta {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 4px ridge lab(91.4801% -.684053 -27.7666);
+    border-radius: 12px;
+    background-color: lab(76 11.84 -25.8 / 0.25);
+}
+
+.page>#quartz-body .center>article {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 4px ridge lab(91.4801% -.684053 -27.7666);
+    border-radius: 12px;
+    background-color: lab(76 11.84 -25.8 / 0.25);
+}
+
+/* Sidebar */
+
+.explorer {
+    background-color: lab(78 1.58 -22.44) !important;
+    border: 4px ridge lab(91.4801% -.684053 -27.7666);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+div#explorer-3 {
+    background-color: lab(96 -8.19 -6.02) !important;
+    border: 4px ridge lab(91.4801% -.684053 -27.7666);
+    border-radius: 12px;
+    padding: 10px;
+}
