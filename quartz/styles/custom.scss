@@ -1,5 +1,4 @@
 @use "./base.scss";
-@use "themes";
 
 // put your custom CSS here!
 
@@ -85,7 +84,15 @@ p.content-meta {
     background-color: lab(76 11.84 -25.8 / 0.25);
 }
 
+/* Center */
+margin-top: 70px !important;
+
+
 /* Sidebar */
+
+.sidebar.left,.sidebar.right{
+margin-top: 80px !important;
+}
 
 .explorer {
     background-color: lab(78 1.58 -22.44) !important;
@@ -100,3 +107,39 @@ div#explorer-3 {
     border-radius: 12px;
     padding: 10px;
 }
+
+.explorer h4 {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* Background Image */
+#quartz-root {
+	position: relative;
+}
+
+#quartz-root::before {
+	content: "";
+	position: absolute;
+	inset: 0 auto auto 0;
+	width: 100%;
+	height: 150px;
+	background: url("img/hd01.webp") center / cover repeat-x;
+	pointer-events: none;
+	z-index: -1;
+
+	-webkit-mask-image: linear-gradient(
+		to bottom,
+		black 0%,
+		black 70%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		to bottom,
+		black 0%,
+		black 70%,
+		transparent 100%
+	);
+}
+
+
