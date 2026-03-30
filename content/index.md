@@ -8,6 +8,9 @@ cover: content/img/hd01.webp
 ---
 
 Oh shit is this working now?
+
 Hi, I'm messing with the theme lmao.
+
+Pardon the big oof.
 
 ![[2026 . 03 . 29]]
