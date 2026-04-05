@@ -1,68 +1,67 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
-// components shared across all pages
+const sidebarHeader = Component.Flex({
+  components: [
+    {
+      Component: Component.PageTitle(),
+      grow: true,
+    },
+    {
+      Component: Component.Darkmode(),
+    },
+  ],
+  direction: "row",
+  gap: "0.75rem",
+})
+
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com",
+      Neocities: "https://neocities.org",
     },
   }),
 }
 
-// components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
-    Component.ConditionalRender({
-      component: Component.Breadcrumbs(),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
+    Component.Breadcrumbs(),
     Component.ArticleTitle(),
     Component.ContentMeta(),
-    Component.TagList(),
   ],
   left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
-      ],
-    }),
+    sidebarHeader,
+    Component.Search(),
     Component.Explorer(),
+    Component.MobileOnly(
+      Component.Spacer()
+    ),
   ],
   right: [
-    Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
+  pageBody: Component.Content(),
+  afterBody: [],
 }
 
-// components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [
+    Component.Breadcrumbs(),
+    Component.ArticleTitle(),
+    Component.ContentMeta(),
+  ],
   left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-      ],
-    }),
+    sidebarHeader,
+    Component.Search(),
     Component.Explorer(),
   ],
-  right: [],
+  right: [
+    Component.DesktopOnly(Component.TableOfContents()),
+  ],
+  pageBody: Component.Content(),
+  afterBody: [],
 }
