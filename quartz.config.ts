@@ -1,62 +1,85 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
-
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "ｒａｂｂｉｔｗａｖｅ９８",
-    pageTitleSuffix: " · lavender spark",
+    pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
-    analytics: null,
+    analytics: {
+      provider: "plausible",
+    },
     locale: "en-US",
     baseUrl: "rabbitwave98.neocities.org",
+    ignorePatterns: ["private", "templates", ".obsidian"],
+    defaultDateType: "modified",
     theme: {
-  fontOrigin: "googleFonts",
-  cdnCaching: true,
-  typography: {
-    header: "DM Serif Display",
-    body: "Inter",
-    code: "JetBrains Mono",
-  },
-  colors: {
-    lightMode: {
-      light: "#fcf8ff",
-      lightgray: "#e9daf7",
-      gray: "#c8b2de",
-      darkgray: "#705d84",
-      dark: "#3b2d4d",
-      secondary: "#b784ff",
-      tertiary: "#ffc7f2",
-      highlight: "rgba(183, 132, 255, 0.16)",
-      textHighlight: "#f6d8ff88",
+      fontOrigin: "googleFonts",
+      cdnCaching: true,
+      typography: {
+        header: "Schibsted Grotesk",
+        body: "Source Sans Pro",
+        code: "IBM Plex Mono",
+      },
+      colors: {
+        lightMode: {
+          light: "#faf8f8",
+          lightgray: "#e5e5e5",
+          gray: "#b8b8b8",
+          darkgray: "#4e4e4e",
+          dark: "#2b2b2b",
+          secondary: "#284b63",
+          tertiary: "#84a59d",
+          highlight: "rgba(143, 159, 169, 0.15)",
+          textHighlight: "#fff23688",
+        },
+        darkMode: {
+          light: "#161618",
+          lightgray: "#393639",
+          gray: "#646464",
+          darkgray: "#d4d4d4",
+          dark: "#ebebec",
+          secondary: "#7b97aa",
+          tertiary: "#84a59d",
+          highlight: "rgba(143, 159, 169, 0.15)",
+          textHighlight: "#b3aa0288",
+        },
+      },
     },
-    darkMode: {
-      light: "#1b1624",
-      lightgray: "#31273f",
-      gray: "#5a4d6c",
-      darkgray: "#d4c8e6",
-      dark: "#f7f2ff",
-      secondary: "#d2a8ff",
-      tertiary: "#ffc7f2",
-      highlight: "rgba(210, 168, 255, 0.18)",
-      textHighlight: "#f6d8ff55",
-    },
   },
-},
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
-      Plugin.CreatedModifiedDate(),
-      Plugin.SyntaxHighlighting(),
-      Plugin.ObsidianFlavoredMarkdown(),
+      Plugin.CreatedModifiedDate({
+        priority: ["frontmatter", "git", "filesystem"],
+      }),
+      Plugin.SyntaxHighlighting({
+        theme: {
+          light: "github-light",
+          dark: "github-dark",
+        },
+        keepBackground: false,
+      }),
+      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
-      Plugin.CrawlLinks(),
+      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
-      Plugin.Latex(),
+      Plugin.Latex({ renderEngine: "katex" }),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
+
+    
+        
+          
+    
+
+        
+        Expand All
+    
+    @@ -81,10 +55,7 @@ const config: QuartzConfig = {
+  
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
@@ -68,9 +91,22 @@ const config: QuartzConfig = {
       }),
       Plugin.Assets(),
       Plugin.Static(),
+      Plugin.Favicon(),
       Plugin.NotFoundPage(),
+      // Comment out CustomOgImages to speed up build time
+      Plugin.CustomOgImages(),
     ],
   },
 }
 
+    
+          
+            
+    
+
+          
+          Expand Down
+    
+    
+  
 export default config
