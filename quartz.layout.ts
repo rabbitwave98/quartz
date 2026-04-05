@@ -2,7 +2,6 @@ import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
 // components shared across all pages
-
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
@@ -40,17 +39,12 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
-
-
-
   ],
   right: [
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
-
-
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
@@ -66,15 +60,9 @@ export const defaultListPageLayout: PageLayout = {
           grow: true,
         },
         { Component: Component.Darkmode() },
-  ],
+      ],
     }),
-
-
     Component.Explorer(),
   ],
   right: [],
-
-
-
-
 }
