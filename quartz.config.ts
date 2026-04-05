@@ -1,8 +1,9 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "ｒａｂｂｉｔｗａｖｅ９８",
+    pageTitle: "rabbitwave98",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -69,17 +70,6 @@ const config: QuartzConfig = {
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -81,10 +55,7 @@ const config: QuartzConfig = {
-  
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
@@ -99,14 +89,4 @@ const config: QuartzConfig = {
   },
 }
 
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
 export default config
