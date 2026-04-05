@@ -1,145 +1,309 @@
 @use "./base.scss";
 
-// put your custom CSS here!
-
-/* Remove the Graph Widget */
-.graph {
-    display: none;
+:root {
+  --siteBg: linear-gradient(
+    180deg,
+    #fffaff 0%,
+    #f8f1ff 28%,
+    #f4ecff 58%,
+    #fffaff 100%
+  );
+  --panelBg: rgba(255, 255, 255, 0.82);
+  --panelBorder: #e5d2f7;
+  --panelShadow: 0 0 0 1px rgba(255, 255, 255, 0.65), 0 10px 30px rgba(174, 140, 214, 0.18);
+  --softGlow: 0 0 30px rgba(215, 176, 255, 0.18);
+  --lavender: #b784ff;
+  --lavenderDeep: #8f68c7;
+  --pinkMist: #ffd7f5;
+  --textMain: #493a5d;
+  --textSoft: #766487;
+  --whiteLine: rgba(255, 255, 255, 0.75);
 }
 
-/* Sidebar Page Title */
-.page-title {
-    font-size: 1rem;
+html,
+body {
+  background: var(--siteBg);
 }
 
-/* Center the Light/Dark Mode & Reader Icons */
-#quartz-body > div.left.sidebar > div.flex-component {
-    margin-left: auto;
-    margin-right: auto;
+body {
+  color: var(--textMain);
+  letter-spacing: 0.01em;
 }
 
-/* Remove the Search Bar */
-#quartz-body > div.left.sidebar > div.flex-component > div:nth-child(1) {
-    display: none;
+/* background wash */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255, 214, 246, 0.42), transparent 26%),
+    radial-gradient(circle at 85% 12%, rgba(214, 197, 255, 0.42), transparent 24%),
+    radial-gradient(circle at 78% 78%, rgba(255, 255, 255, 0.5), transparent 20%);
+  z-index: 0;
 }
 
-/* Cute Retro Borders */
+.page {
+  position: relative;
+  z-index: 1;
+}
 
+/* overall frame */
+.page > #quartz-body {
+  gap: 1.25rem;
+  padding-top: 1.25rem;
+}
+
+/* sidebar and main panels */
+.left.sidebar,
+.right.sidebar,
+.center article,
+.popover,
+.explorer,
+.search,
+.toc,
+.backlinks,
+.recent-notes {
+  background: var(--panelBg);
+  border: 1px solid var(--panelBorder);
+  border-radius: 18px;
+  box-shadow: var(--panelShadow);
+  backdrop-filter: blur(8px);
+}
+
+/* left column */
 .left.sidebar {
-    background-color: lab(97.2858% -.784516 -27.802);
-    border: 4px ridge lab(91.4801% -.684053 -27.7666);
-    border-radius: 12px;
+  padding: 1rem;
+  position: sticky;
+  top: 1rem;
 }
 
+.left.sidebar .page-title {
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: var(--lavenderDeep);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.left.sidebar .darkmode {
+  border-radius: 999px;
+  border: 1px solid var(--panelBorder);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.left.sidebar .search {
+  margin: 0.85rem 0 1rem;
+  padding: 0.75rem;
+  border-radius: 14px;
+}
+
+.left.sidebar input[type="text"] {
+  border-radius: 10px;
+  border: 1px solid var(--panelBorder);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--textMain);
+}
+
+.left.sidebar .explorer {
+  padding: 0.9rem;
+  border-radius: 14px;
+}
+
+.left.sidebar .folder-title,
+.left.sidebar .explorer-title {
+  color: var(--lavenderDeep);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.77rem;
+}
+
+.left.sidebar ul,
+.left.sidebar ol {
+  gap: 0.25rem;
+}
+
+.left.sidebar a {
+  display: block;
+  padding: 0.42rem 0.65rem;
+  border-radius: 10px;
+  color: var(--textMain);
+  text-decoration: none;
+  transition: background 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.left.sidebar a:hover,
+.left.sidebar a:focus {
+  background: linear-gradient(90deg, rgba(183, 132, 255, 0.14), rgba(255, 215, 245, 0.22));
+  color: var(--lavenderDeep);
+  transform: translateX(2px);
+}
+
+/* center column */
+.center article {
+  padding: 1.4rem 1.4rem 1.7rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.center article::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #e6d0ff 0%, #ffcfee 50%, #e6d0ff 100%);
+}
+
+.article-title h1 {
+  color: var(--lavenderDeep);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.content-meta {
+  color: var(--textSoft);
+  border-bottom: 1px solid rgba(229, 210, 247, 0.9);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.center .page-listing,
+.center .tags,
+.center .content .callout,
+.center pre {
+  border-radius: 14px;
+}
+
+.center .content h2,
+.center .content h3,
+.center .content h4 {
+  color: var(--lavenderDeep);
+  letter-spacing: 0.03em;
+}
+
+.center .content p,
+.center .content li {
+  color: var(--textMain);
+}
+
+.center .content a {
+  color: var(--lavender);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(183, 132, 255, 0.28);
+}
+
+.center .content a:hover {
+  color: var(--lavenderDeep);
+  border-bottom-color: rgba(183, 132, 255, 0.75);
+}
+
+.center blockquote {
+  background: rgba(255, 246, 255, 0.78);
+  border-left: 4px solid #d8b2ff;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+
+.center code {
+  background: rgba(248, 232, 255, 0.9);
+  border-radius: 8px;
+  padding: 0.12rem 0.35rem;
+}
+
+/* right column */
 .right.sidebar {
-    background-color: lab(97.2858% -.784516 -27.802);
-    border: 4px ridge lab(91.4801% -.684053 -27.7666);
-    border-radius: 12px;
+  padding: 1rem;
+  gap: 1rem;
 }
 
-nav.breadcrumb-container {
-    background-color: lab(97.2858% -.784516 -27.802);
-    border: 4px ridge lab(91.4801% -.684053 -27.7666);
-    border-radius: 12px;
-    padding: 5px;
+.right.sidebar .toc,
+.right.sidebar .backlinks {
+  padding: 0.95rem;
+  border-radius: 14px;
 }
 
-
-
-/* TEMP: Item List Less Funky */
-li.section-li {
-    display: contents;
+.right.sidebar h3,
+.right.sidebar .toc-header {
+  color: var(--lavenderDeep);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.77rem;
 }
 
-li.section {
-    padding: 5px;
+.right.sidebar a {
+  color: var(--textMain);
+  text-decoration: none;
 }
 
-/* Main article content */
-
-h1.article-title {
-    background-color: lab(76 11.84 -25.8 / 0.25);
-    border: 4px ridge lab(91.4801% -.684053 -27.7666);
-    border-radius: 12px;
-    padding: 5px;
+.right.sidebar a:hover {
+  color: var(--lavenderDeep);
 }
 
-p.content-meta {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border: 4px ridge lab(91.4801% -.684053 -27.7666);
-    border-radius: 12px;
-    background-color: lab(76 11.84 -25.8 / 0.25);
+/* footer */
+footer {
+  margin-top: 1.25rem;
+  padding: 1rem 0 2rem;
 }
 
-.page>#quartz-body .center>article {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border: 4px ridge lab(91.4801% -.684053 -27.7666);
-    border-radius: 12px;
-    background-color: lab(76 11.84 -25.8 / 0.25);
+footer ul {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--panelBorder);
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  box-shadow: var(--panelShadow);
+  width: fit-content;
+  margin: 0 auto;
 }
 
-/* Center */
-margin-top: 70px !important;
-
-
-/* Sidebar */
-
-.sidebar.left,.sidebar.right{
-margin-top: 80px !important;
+footer a {
+  color: var(--lavenderDeep);
+  text-decoration: none;
 }
 
-.explorer {
-    background-color: lab(78 1.58 -22.44) !important;
-    border: 4px ridge lab(91.4801% -.684053 -27.7666);
-    border-radius: 12px;
-    padding: 10px;
+/* graph / badges / small details */
+.graph .node.current {
+  fill: var(--lavender);
 }
 
-div#explorer-3 {
-    background-color: lab(96 -8.19 -6.02) !important;
-    border: 4px ridge lab(91.4801% -.684053 -27.7666);
-    border-radius: 12px;
-    padding: 10px;
+.graph .node.neighbor {
+  fill: #e6c4ff;
 }
 
-.explorer h4 {
-	margin-left:auto;
-	margin-right:auto;
+::selection {
+  background: rgba(218, 186, 255, 0.6);
+  color: #3d2f4f;
 }
 
-/* Background Image */
-#quartz-root {
-	position: relative;
+/* mobile */
+@media screen and (max-width: 800px) {
+  .page > #quartz-body {
+    padding-top: 0.75rem;
+    gap: 0.9rem;
+  }
+
+  .left.sidebar,
+  .right.sidebar,
+  .center article {
+    border-radius: 16px;
+  }
+
+  .left.sidebar,
+  .right.sidebar {
+    position: static;
+    padding: 0.85rem;
+  }
+
+  .center article {
+    padding: 1rem 1rem 1.25rem;
+  }
+
+  footer ul {
+    border-radius: 18px;
+    width: 100%;
+    justify-content: center;
+  }
 }
-
-#quartz-root::before {
-	content: "";
-	position: absolute;
-	inset: 0 auto auto 0;
-	width: 100%;
-	height: 150px;
-	background: url("img/hd01.webp") center / cover repeat-x;
-	pointer-events: none;
-	z-index: -1;
-
-	-webkit-mask-image: linear-gradient(
-		to bottom,
-		black 0%,
-		black 70%,
-		transparent 100%
-	);
-	mask-image: linear-gradient(
-		to bottom,
-		black 0%,
-		black 70%,
-		transparent 100%
-	);
-}
-
-
