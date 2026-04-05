@@ -18,8 +18,10 @@ const sidebarHeader = Component.Flex({
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
+  afterBody: [],
   footer: Component.Footer({
     links: {
+      GitHub: "https://github.com",
       Neocities: "https://neocities.org",
     },
   }),
@@ -35,16 +37,12 @@ export const defaultContentPageLayout: PageLayout = {
     sidebarHeader,
     Component.Search(),
     Component.Explorer(),
-    Component.MobileOnly(
-      Component.Spacer()
-    ),
+    Component.MobileOnly(Component.Spacer()),
   ],
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
-  pageBody: Component.Content(),
-  afterBody: [],
 }
 
 export const defaultListPageLayout: PageLayout = {
@@ -61,6 +59,4 @@ export const defaultListPageLayout: PageLayout = {
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
   ],
-  pageBody: Component.Content(),
-  afterBody: [],
 }
